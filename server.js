@@ -1,5 +1,6 @@
 //  OpenShift sample Node application
 var express = require('express'),
+    path = require('path');
     fs      = require('fs'),
     app     = express(),
     eps     = require('ejs'),
@@ -58,23 +59,25 @@ var initDb = function(callback) {
   });
 };
 
-app.get('/', function (req, res) {
-  // try to initialize the db on every request if it's not already
-  // initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
-  if (db) {
-    var col = db.collection('counts');
-    // Create a document with request IP and current time of request
-    col.insert({ip: req.ip, date: Date.now()});
-    col.count(function(err, count){
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-    });
-  } else {
-    res.render('index.html', { pageCountMessage : null});
-  }
-});
+//app.get('/', function (req, res) {
+//  // try to initialize the db on every request if it's not already
+//  // initialized.
+//  if (!db) {
+//    initDb(function(err){});
+//  }
+//  if (db) {
+//    var col = db.collection('counts');
+//    // Create a document with request IP and current time of request
+//    col.insert({ip: req.ip, date: Date.now()});
+//    col.count(function(err, count){
+//      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+//    });
+//  } else {
+//    res.render('index.html', { pageCountMessage : null});
+//  }
+//});
+
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/pagecount', function (req, res) {
   // try to initialize the db on every request if it's not already
@@ -89,6 +92,10 @@ app.get('/pagecount', function (req, res) {
   } else {
     res.send('{ pageCount: -1 }');
   }
+});
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 // error handling
