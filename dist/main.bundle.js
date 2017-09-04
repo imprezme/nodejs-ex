@@ -181,7 +181,7 @@ var Book = (function () {
 }());
 
 var BOOKS = [
-    new Book(1, 'NHKラジオ講座「入門ビジネス英語」', undefined, './assets/book1-bg.png', 0),
+    new Book(1, 'NHKラジオ講座「入門ビジネス英語」', undefined, './assets/book1-bg.png', 2),
     new Book(2, 'ＮＨＫラジオ 入門ビジネス英語「ネイティブが教える-コミュニケーションテクニック６０」', 'https://www.amazon.co.jp/ＮＨＫ-ＣＤ-ＢＯＯＫ-ＮＨＫラジオ-入門ビジネス英語-ネイティブが教える-コミュニケーションテクニック６０-エド・スミス/dp/4140395427/ref=sr_1_1?ie=UTF8&qid=1498846085&sr=8-1&keywords=ＮＨＫラジオ-入門ビジネス英語-ネイティブが教える-コミュニケーションテクニック６０-', './assets/book2-bg.png', 2),
     new Book(3, '「日本人が知らないネイティブの選択」', 'https://www.amazon.co.jp/s/ref=nb_sb_noss?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=「日本人が知らないネイティヴの選択」', './assets/book3-bg.png', 2),
     new Book(4, '生涯学習のユーキャン「TOEICテスト対策講座」', 'http://www.u-can.co.jp/course/data/in_html/90/text/', './assets/book4-bg.png', 2),
